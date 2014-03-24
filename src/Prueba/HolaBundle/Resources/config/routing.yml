@@ -1,0 +1,3 @@
+prueba_hola_homepage:
+    pattern:  /hola/{name}
+    defaults: { _controller: PruebaHolaBundle:Default:index }

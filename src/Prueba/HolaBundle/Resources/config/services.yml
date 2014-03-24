@@ -1,0 +1,7 @@
+parameters:
+#    prueba_hola.example.class: Prueba\HolaBundle\Example
+
+services:
+#    prueba_hola.example:
+#        class: %prueba_hola.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
