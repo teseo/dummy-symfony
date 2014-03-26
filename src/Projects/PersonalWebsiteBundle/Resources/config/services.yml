@@ -1,0 +1,7 @@
+parameters:
+#    projects_personal_website.example.class: Projects\PersonalWebsiteBundle\Example
+
+services:
+#    projects_personal_website.example:
+#        class: %projects_personal_website.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,15 +1,9 @@
 <DOCTYPE html>
 <html>
 <head>
-<title>{% block title %}Bootstrap 101 Template{% endblock %} </title>
+<title>{% block title %}{% endblock %} </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block stylesheets %}
-        {% stylesheets '@bootstrap_less'
-            '@PruebaHolaBundle/Resources/public/css/jumbotron-narrow.css'
-            combine=true
-        %}
-             <link rel="stylesheet" href="{{ asset_url }}" type="text/css" rel="stylesheet">
-        {% endstylesheets %}
     {% endblock %}
 </head>
 <body>

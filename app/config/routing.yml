@@ -1,3 +1,7 @@
+projects_personal_website:
+    resource: "@ProjectsPersonalWebsiteBundle/Resources/config/routing.yml"
+    prefix:   /
+
 prueba_hola:
     resource: "@PruebaHolaBundle/Resources/config/routing.yml"
     prefix:   /

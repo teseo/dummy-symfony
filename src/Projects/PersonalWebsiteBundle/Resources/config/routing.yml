@@ -1,0 +1,6 @@
+projects_personal_website_homepage:
+    pattern:  /web/{name}
+    defaults: { _controller: ProjectsPersonalWebsiteBundle:Home:index }
+projects_personal_website_adminhomepage:
+    pattern:  /admin/{name}
+    defaults: { _controller: ProjectsPersonalWebsiteBundle:HomeAdmin:index }
