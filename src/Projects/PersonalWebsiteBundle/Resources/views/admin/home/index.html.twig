@@ -2,28 +2,10 @@
 {% block title %}Admin Site{% endblock %}
 {% block stylesheets %}
     {% stylesheets '@bootstrap_less'
-    '@ProjectsPersonalWebsiteBundle/Resources/public/css/font-awesome.css'
-    '@ProjectsPersonalWebsiteBundle/Resources/public/css/sb-admin.css'
-    combine=true
+    '@ProjectsPersonalWebsiteBundle/Resources/public/css/signing.css'
+    combine=false
+    filter='yui_css'
     %}
-    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" rel="stylesheet">
     {% endstylesheets %}
-{% endblock %}
-{% block body %}
-
-    <div id="wrapper">
-
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">javiermellado.com Admin v0.1</a>
-            </div>
-        </nav>
-        {% if true %}
-            {% include 'ProjectsPersonalWebsiteBundle:admin:home/loggedin.html.twig' %}
-        {% else %}
-            {% include 'ProjectsPersonalWebsiteBundle:admin:home/loggedin.html.twig' %}
-        {% endif %}
-
-    </div>
-Hello admin {{ name }}!
 {% endblock %}

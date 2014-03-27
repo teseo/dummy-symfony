@@ -1,9 +1,12 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <title>{% block title %}{% endblock %} </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block stylesheets %}
+         {% stylesheets '@bootstrap_less' output="css/main.css" filter='yui_css'%}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" rel="stylesheet">
+         {% endstylesheets %}
     {% endblock %}
 </head>
 <body>
@@ -12,7 +15,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    {% javascripts '@jquery_js' '@bootstrap_js' filter='?yui_js' combine=true %}
+    {% javascripts '@jquery_js' filter='yui_js' output="js/main.js"%}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
 {% endblock %}

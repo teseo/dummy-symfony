@@ -28,18 +28,27 @@ monolog:
         #chromephp:
         #    type:   chromephp
         #    level:  info
-
-assetic:
-    use_controller: true
-
 twig:
     cache: false
     debug: true
-
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
 services:
     twig.extension.debug:
         class:      Twig_Extension_Debug
         tags:
                 - { name: 'twig.extension' }
+    memcache:
+        class: Memcache
+        calls:
+            - [ addServer, ['localhost', 11211] ]
+    memcache_cache:
+        class: Doctrine\Common\Cache\MemcacheCache
+        calls:
+            - [ setMemcache, [@memcache] ]
+    entity_manager_class:
+        class:        Projects\PersonalWebsiteBundle\Services\entityManager
+        arguments:    ["@doctrine.orm.entity_manager"]
 #swiftmailer:
 #    delivery_address: me@example.com

@@ -1,6 +1,15 @@
 projects_personal_website_homepage:
     pattern:  /web/{name}
     defaults: { _controller: ProjectsPersonalWebsiteBundle:Home:index }
+
 projects_personal_website_adminhomepage:
-    pattern:  /admin/{name}
+    pattern:  /admin/
     defaults: { _controller: ProjectsPersonalWebsiteBundle:HomeAdmin:index }
+
+projects_personal_website_logoutadmin:
+    pattern:  /admin/logout
+    defaults: { _controller: ProjectsPersonalWebsiteBundle:HomeAdmin:logout }
+
+projects_personal_website_cache:
+    pattern:  /admin/cache
+    defaults: { _controller: ProjectsPersonalWebsiteBundle:HomeAdmin:cache }

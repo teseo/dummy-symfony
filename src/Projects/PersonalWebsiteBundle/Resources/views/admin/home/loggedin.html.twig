@@ -1,4 +1,12 @@
+{% if name is defined %}
 
+    <div class="alert-info fade in">
+
+        <strong>Hello {{ name }} you are logged in!</strong>
+
+    </div>
+
+{% endif %}
 <nav class="navbar-default navbar-static-side" role="navigation">
     <div class="sidebar-collapse">
         <ul class="nav" id="side-menu">
@@ -9,7 +17,7 @@
         </ul>
     </div>
 </nav>
-
+<a href="{{ path('projects_personal_website_logoutadmin') }}" >Log out</a>
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">

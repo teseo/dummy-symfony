@@ -33,14 +33,16 @@ twig:
 assetic:
     debug:          %kernel.debug%
     use_controller: false
-    bundles:        [ PruebaHolaBundle, ProjectsPersonalWebsiteBundle ]
+    bundles:        [ ProjectsPersonalWebsiteBundle ]
     java: /usr/bin/java
     filters:
         cssrewrite: ~
         cssembed:
           jar: %kernel.root_dir%/Resources/java/cssembed-0.4.5.jar
         yui_js:
-          jar: %kernel.root_dir%/Resources/java/yuicompressor.jar
+          jar: %kernel.root_dir%/Resources/java/yui-compressor.jar
+        yui_css:
+          jar: %kernel.root_dir%/Resources/java/yui-compressor.jar
         lessphp:
           file: %kernel.root_dir%/../vendor/oyejorge/less.php/lessc.inc.php
           apply_to: "\.less$"
@@ -48,22 +50,55 @@ assetic:
         jquery_js:
             inputs:
                 - '%kernel.root_dir%/../components/jquery/jquery.min.js'
-            filters: [?yui_js]
-        bootstrap_js:
+            filters: [yui_js]
+        bootstrap_transition_js:
             inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/transition.js'
+            filters: [yui_js]
+        bootstrap_alert_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/alert.js'
+            filters: [yui_js]
+        bootstrap_modal_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/modal.js'
+            filters: [yui_js]
+        bootstrap_dropdown_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/dropdown.js'
+            filters: [yui_js]
+        bootstrap_scrollspy_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/scrollspy.js'
+            filters: [yui_js]
+        bootstrap_tab_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/tab.js'
+            filters: [yui_js]
+        bootstrap_tooltip_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/tooltip.js'
+            filters: [yui_js]
+        bootstrap_popover_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/popover.js'
+            filters: [yui_js]
+        bootstrap_button_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/button.js'
+            filters: [yui_js]
+        bootstrap_collapse_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/collapse.js'
+            filters: [yui_js]
+        bootstrap_carousel_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/carousel.js'
+            filters: [yui_js]
+        bootstrap_affix_js:
+            inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/affix.js'
-            filters: [?yui_js]
+            filters: [yui_js]
         bootstrap_less:
             inputs:
                 - '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'

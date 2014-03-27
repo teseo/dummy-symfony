@@ -1,19 +1,16 @@
-{% if error %}
-    <div>{{ error.message }}</div>
-{% endif %}
+{% extends 'ProjectsPersonalWebsiteBundle:admin:home/index.html.twig' %}
 
-<form action="{{ path('login_check') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+{% block body %}
+    <div class="container">
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password" />
-
-    {#
-        If you want to control the URL the user
-        is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}
-
-    <button type="submit">login</button>
-</form>
+        <form class="form-signin" role="form" method="POST" action="{{ path('projects_personal_website_adminhomepage') }}">
+            <h2 class="form-signin-heading">Please log in</h2>
+            <input type="text" name="name" class="form-control" placeholder="name" required autofocus>
+            <input type="password" name="password" class="form-control" placeholder="Password" required>
+            <label class="checkbox">
+                <input type="checkbox" name="remember-me" value="1"> Remember me
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+        </form>
+    </div>
+{% endblock %}
