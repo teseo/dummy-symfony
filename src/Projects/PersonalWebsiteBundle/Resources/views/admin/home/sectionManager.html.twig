@@ -6,12 +6,11 @@
                 <button class="btn dropdown-toggle" data-toggle="dropdown">Select a category </button>
                 <ul class="dropdown-menu">
                     {% for element in list %}
-                        <li><a href="{{ path('projects_personal_website_logoutadmin', {'idproject': project.id, 'iduser': user.id}) }}">{{ element.name }}</a></li>
+                        <li><a href="{{ path('projects_personal_website_editcategory', {'id': element.id}) }}">{{ element.name }}</a></li>
                     {% else %}
                         <li><p class="text-warning">No category found</p></li>
                     {% endfor %}
                 </ul>
-            </div>
-        </div>
-    </div>
-</div>
+                {% if edit is defined %}
+
+                    {% include 'Pr

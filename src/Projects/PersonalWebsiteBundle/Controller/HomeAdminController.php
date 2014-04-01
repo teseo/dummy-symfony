@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Projects\PersonalWebsiteBundle\Entity\users;
+use Projects\PersonalWebsiteBundle\Entity\category;
 use Projects\PersonalWebsiteBundle\Modals\login;
 
 /**
@@ -98,28 +99,44 @@ class HomeAdminController extends Controller
 	}
 
 	/**
-	 * Display all categories content editor
+	 * Display category information to be edited
+	 *
+	 * @author Javier Mellado <sol@javiermellado.com>
+	 * @param \Symfony\Component\HttpFoundation\Request $request
+	 * @throws Exception
+	 * @return \Symfony\Component\HttpFoundation\Response
 	 */
-	private function getCategoriesSectionData(){
-		//User sends login request
+	public function editCategoryAction(Request $request){
+		$session = $request->getSession();
+
 		$entityManager = $this->getDoctrine()->getManager();
 		/** @var $categoryRepository \Projects\PersonalWebsiteBundle\Entity\categoryRepository */
-
 		$categoryRepository = $entityManager->getRepository('ProjectsPersonalWebsiteBundle:category');
-		if($categoryRepository->getTotalRowCount() > 0){
-			return $categoryRepository->findAll();
-		} else{
-			return array();
-		}
+		$categoryId = $request->get('id');
 
-	}
-	/**
-	 * Display all categories content editor
-	 */
-	private function getContentSectionData(){
-		//User sends login request
-		$entityManager = $this->getDoctrine()->getManager();
-		$userRepository = $entityManager->getRepository('ProjectsPersonalWebsiteBundle:user');
+		$category = $categoryRepository->findOneBy(array ('id' => $categoryId));
+		$categories = $categoryRepository->findAll();
+		if (!$category){
+
+			throw new Exception ('Category not found');
+		}
+		$categoryEntity = new category();
+		$form = $this->createFormBuilder($categoryEntity)
+			->add('category', 'text')
+			->add('save', 'submit')
+			->getForm();
+
+		$data = array(
+			'edit' => true,
+			'category' => $category,
+			'list' => $categories,
+			'form' => $form->createView(),
+			'section' => 'categories');
+		$template = 'ProjectsPersonalWebsiteBundle:admin:home/content.html.twig';
+
+		return $this->prepare($session, $template, $data);
+
+
 	}
 	/**
 	 * Log out and return to login page
@@ -134,7 +151,9 @@ class HomeAdminController extends Controller
 		return $this->render(self::LOGIN_TEMPLATE);
 	}
 
-
+	/**
+	 * PRIVATE METHODS
+	 */
 
 	/**
 	 *
@@ -143,22 +162,4 @@ class HomeAdminController extends Controller
 	 * redirects to login page if not success
 	 *
 	 * @author Javier Mellado <sol@javiermellado.com>
-	 * @param \Symfony\Component\HttpFoundation\Session\Session $session
-	 * @param string $successTemplate
-	 * @param array $data
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-	private function prepare(\Symfony\Component\HttpFoundation\Session\Session $session, $successTemplate, $data = NULL){
-		if($session->has('login')){
-
-			//User already has a login session
-			$loginSessionData = $session->get('login');
-			$data['_loggedInUserName'] = $loginSessionData->getName();
-
-			return $this->render($successTemplate, $data);
-		} else {
-			//admin login page
-			return $this->render(self::LOGIN_TEMPLATE);
-		}
-	}
-}
+	 * @param \Symfony\Component\HttpFoundation\Se
