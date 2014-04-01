@@ -1,11 +1,2 @@
 {% extends '::base.html.twig' %}
 {% block title %}Admin Site{% endblock %}
-{% block stylesheets %}
-    {% stylesheets '@bootstrap_less'
-    '@ProjectsPersonalWebsiteBundle/Resources/public/css/signing.css'
-    combine=false
-    filter='yui_css'
-    %}
-        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" rel="stylesheet">
-    {% endstylesheets %}
-{% endblock %}

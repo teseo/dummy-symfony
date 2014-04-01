@@ -1,5 +1,13 @@
 {% extends 'ProjectsPersonalWebsiteBundle:admin:home/index.html.twig' %}
-
+{% block stylesheets %}
+    {% stylesheets '@bootstrap_min_css'
+    '@ProjectsPersonalWebsiteBundle/Resources/public/css/signing.css'
+    combine=false
+    filter='yui_css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock %}
 {% block body %}
     <div class="container">
 

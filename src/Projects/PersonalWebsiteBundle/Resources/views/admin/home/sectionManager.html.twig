@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <h1 class="page-header">Manage Section {{ section }}</h1>
+            <div class="btn-group">
+                <button class="btn dropdown-toggle" data-toggle="dropdown">Select a category </button>
+                <ul class="dropdown-menu">
+                    {% for element in list %}
+                        <li><a href="{{ path('projects_personal_website_logoutadmin', {'idproject': project.id, 'iduser': user.id}) }}">{{ element.name }}</a></li>
+                    {% else %}
+                        <li><p class="text-warning">No category found</p></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

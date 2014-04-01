@@ -164,4 +164,50 @@ class content
     {
         return $this->date;
     }
+
+    /**
+     * Set category
+     *
+     * @param \Projects\PersonalWebsiteBundle\Entity\category $category
+     * @return content
+     */
+    public function setCategory(\Projects\PersonalWebsiteBundle\Entity\category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Projects\PersonalWebsiteBundle\Entity\category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set language
+     *
+     * @param \Projects\PersonalWebsiteBundle\Entity\language $language
+     * @return content
+     */
+    public function setLanguage(\Projects\PersonalWebsiteBundle\Entity\language $language = null)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+    /**
+     * Get language
+     *
+     * @return \Projects\PersonalWebsiteBundle\Entity\language 
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
 }

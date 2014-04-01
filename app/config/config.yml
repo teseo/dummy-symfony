@@ -51,58 +51,14 @@ assetic:
             inputs:
                 - '%kernel.root_dir%/../components/jquery/jquery.min.js'
             filters: [yui_js]
-        bootstrap_transition_js:
+        bootstrap_min_js:
             inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/transition.js'
+                - '%kernel.root_dir%/../vendor/twitter/bootstrap/dist/js/bootstrap.min.js'
             filters: [yui_js]
-        bootstrap_alert_js:
+        bootstrap_min_css:
             inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/alert.js'
-            filters: [yui_js]
-        bootstrap_modal_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/modal.js'
-            filters: [yui_js]
-        bootstrap_dropdown_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/dropdown.js'
-            filters: [yui_js]
-        bootstrap_scrollspy_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/scrollspy.js'
-            filters: [yui_js]
-        bootstrap_tab_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/tab.js'
-            filters: [yui_js]
-        bootstrap_tooltip_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/tooltip.js'
-            filters: [yui_js]
-        bootstrap_popover_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/popover.js'
-            filters: [yui_js]
-        bootstrap_button_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/button.js'
-            filters: [yui_js]
-        bootstrap_collapse_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/collapse.js'
-            filters: [yui_js]
-        bootstrap_carousel_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/carousel.js'
-            filters: [yui_js]
-        bootstrap_affix_js:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/js/affix.js'
-            filters: [yui_js]
-        bootstrap_less:
-            inputs:
-                - '%kernel.root_dir%/../vendor/twitter/bootstrap/less/bootstrap.less'
-            filters: [lessphp,cssembed]
+                - '%kernel.root_dir%/../vendor/twitter/bootstrap/dist/css/bootstrap.min.css'
+            filters: [cssembed]
 
 
 # Doctrine Configuration
@@ -122,6 +78,13 @@ doctrine:
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        metadata_cache_driver: memcache
+        query_cache_driver: memcache
+        result_cache_driver:
+            type: memcache
+            host: localhost
+            port: 11211
+            instance_class: Memcache
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -130,3 +93,9 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+sensio_framework_extra:
+    router:  { annotations: true }
+    request: { converters: true }
+    view:    { annotations: true }
+    cache:   { annotations: true }

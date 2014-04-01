@@ -1,0 +1,26 @@
+{% extends 'ProjectsPersonalWebsiteBundle:admin:home/index.html.twig' %}
+{% block stylesheets %}
+    {% stylesheets '@bootstrap_min_css'
+    '@ProjectsPersonalWebsiteBundle/Resources/public/css/dashboard.css'
+    '@ProjectsPersonalWebsiteBundle/Resources/public/css/bootstrap-select.css'
+    combine = false
+    filter ='yui_css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" rel="stylesheet">
+    {% endstylesheets %}
+{% endblock %}
+{% block body %}
+    {% include 'ProjectsPersonalWebsiteBundle:admin:home/sidebar.html.twig' %}
+    {% include 'ProjectsPersonalWebsiteBundle:admin:home/header.html.twig' %}
+    {% include 'ProjectsPersonalWebsiteBundle:admin:home/sectionManager.html.twig' %}
+{% endblock %}
+{% block javascripts %}
+    {% javascripts '@jquery_js'
+    '@bootstrap_min_js'
+    '@ProjectsPersonalWebsiteBundle/Resources/public/js/bootstrap-select.js'
+    filter='yui_js'
+    combine=false
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}

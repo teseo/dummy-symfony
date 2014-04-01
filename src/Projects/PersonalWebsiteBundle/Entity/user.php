@@ -7,10 +7,10 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * users
  *
+ * @ORM\Entity(repositoryClass="Projects\PersonalWebsiteBundle\Entity\userRepository")
  * @ORM\Table()
- * @ORM\Entity
  */
-class users
+class user
 {
     /**
      * @var integer
@@ -70,7 +70,7 @@ class users
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -112,4 +112,14 @@ class users
         return $this->admin;
     }
 
+
+    /**
+     * Get password
+     *
+     * @return string 
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
 }
